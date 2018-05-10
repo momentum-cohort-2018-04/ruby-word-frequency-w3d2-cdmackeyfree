@@ -27,10 +27,14 @@ class Wordfreq
   end
 
   def top_words(number)
-    puts frequencies.to_a
+    freq_array = frequencies.to_a
+    sorted = freq_array.sort_by { |k, v| [-v, k] }
+    (0..(number - 1)).map { |x| sorted[x] }
   end
 
+
   def print_report
+    report = top_words()
   end
 end
 
