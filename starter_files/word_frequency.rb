@@ -1,18 +1,33 @@
 class Wordfreq
+  attr_accessor :filename
   STOP_WORDS = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from',
     'has', 'he', 'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to',
     'were', 'will', 'with']
 
   def initialize(filename)
+    @filename = filename
   end
 
   def frequency(word)
+    file = File.read @filename
+    new_array = file.downcase.gsub(/[^a-z\s]/, " ").split(' ')
+    filtered = new_array.delete_if { |a| STOP_WORDS.include?(a)}
+    filtered.count(word)
   end
 
   def frequencies
+    file = File.read @filename
+    new_array = file.downcase.gsub(/[^a-z\s]/, " ").split(' ')
+    filtered = new_array.delete_if { |a| STOP_WORDS.include?(a)}
+    results_array = filtered.map do |x|
+        wordcount = frequency(x)
+        [x, wordcount]
+      end
+      results_array.to_h
   end
 
   def top_words(number)
+    puts frequencies.to_a
   end
 
   def print_report
