@@ -1,4 +1,6 @@
-class Wordfreq
+  require 'pry'
+  
+  class Wordfreq
   attr_accessor :filename
   STOP_WORDS = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from',
     'has', 'he', 'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to',
@@ -34,7 +36,7 @@ class Wordfreq
 
 
   def print_report
-    report = top_words()
+    report = top_words(10)
   end
 end
 
