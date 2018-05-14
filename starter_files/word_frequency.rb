@@ -1,4 +1,3 @@
-  require 'pry'
   
   class Wordfreq
   attr_accessor :filename
@@ -37,6 +36,13 @@
 
   def print_report
     report = top_words(10)
+    report_string = ""
+    stars = "*"
+    report.each do |a, b|
+      (1..b).each { |i| report_string+= stars }
+      puts "#{a} | #{b} #{report_string}"
+      report_string = ""
+    end
   end
 end
 

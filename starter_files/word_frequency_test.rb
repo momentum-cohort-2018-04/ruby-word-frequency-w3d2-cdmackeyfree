@@ -1,6 +1,5 @@
 require 'minitest/autorun'
 require_relative 'word_frequency'
-require 'minitest/nyan_cat'
 
 def fullpath(filename)
   File.absolute_path(File.join(File.dirname(__FILE__)), filename)
